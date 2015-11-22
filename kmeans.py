@@ -33,7 +33,6 @@ def main():
     #read data into data frame
     data_pts = pd.read_table(data_file, sep='\t', header=None)
     num_features = len(data_pts.columns)  #if using real data
-    # num_features = len(data_pts.columns) - 1  #if using generate-clusters.py data 
 
     #initialize clusters at randomly selected points
     clust_cents = []
@@ -69,7 +68,8 @@ def main():
     cluster_sizes = []
     for cluster in range(len(clust_cents)):
         cluster_sizes.append(len(data_pts[data_pts["Cluster"] == cluster]))
-        print("Cluster #{0}:".format(cluster+1), len(data_pts[data_pts["Cluster"] == cluster]))
+        print("Cluster #{0}:".format(cluster+1), 
+              len(data_pts[data_pts["Cluster"] == cluster]))
 
     if K <= 6 and num_features == 2:
         #plot data points and centroids
@@ -79,9 +79,11 @@ def main():
         for data_pt in range(len(data_pts)):
             color = colors[int(data_pts.ix[data_pt,"Cluster"])]
             marker = markers[int(data_pts.ix[data_pt,2])]
-            plt.scatter(data_pts.ix[data_pt,0],data_pts.ix[data_pt,1], s=50, c=color, marker=marker)
+            plt.scatter(data_pts.ix[data_pt,0],data_pts.ix[data_pt,1], 
+                        s=50, c=color, marker=marker)
         for i in range(K):
-            plt.scatter(clust_cents[i][0],clust_cents[i][1], s=100, c="Orange")
+            plt.scatter(clust_cents[i][0],clust_cents[i][1], 
+                        s=100, c="Orange")
         plt.show()
 
 
