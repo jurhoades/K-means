@@ -1,0 +1,5 @@
+name: kmeans-env
+dependencies:
+- python=3.4.3
+- matplotlib=1.4.3
+- pandas=0.16.2
